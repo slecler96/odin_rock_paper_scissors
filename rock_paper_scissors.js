@@ -1,6 +1,8 @@
 // console.log(game())
 
 
+
+
 function getComputerChoice() {
     let max = 3;
     let choice = Math.floor(Math.random() * max)+1;
@@ -111,45 +113,21 @@ function game() {
 
 
 function tieRoundMessage(){
-    const display_container = document.querySelector('#display_container');
-    const result = document.createElement('p');
-    result.classList.add('game_result');
-    result.textContent = "Tie game";
-    if (display_container.hasChildNodes()) {
-        display_container.replaceChild(result, display_container.firstChild)
-    }
-    else {
-        display_container.appendChild(result);
-    }
+    const outcomeMessage = document.querySelector('#roundOutcomeMessage');
+    outcomeMessage.textContent = "Tie game";
 }
 
 
 
 function winRoundMessage(){
-    const display_container = document.querySelector('#display_container');
-    const result = document.createElement('p');
-    result.classList.add('game_result');
-    result.textContent = "You win!";
-
-    if (display_container.hasChildNodes()) {
-        display_container.replaceChild(result, display_container.firstChild)
-    }
-    else {
-        display_container.appendChild(result);
-    }
+    const outcomeMessage = document.querySelector('#roundOutcomeMessage');
+    outcomeMessage.textContent = "You win!";
 }
 
 function loseRoundMessage(){
-    const display_container = document.querySelector('#display_container');
-    const result = document.createElement('p');
-    result.classList.add('game_result');
-    result.textContent = "You lose!";
-    if (display_container.hasChildNodes()) {
-        display_container.replaceChild(result, display_container.firstChild)
-    }
-    else {
-        display_container.appendChild(result);
-    }
+    const outcomeMessage = document.querySelector('#roundOutcomeMessage');
+    outcomeMessage.textContent = "You lose!";
+
 }
 
 function displayUpdatedScore(){
@@ -173,21 +151,27 @@ const buttons = document.querySelectorAll('button')
 
 let computerScore = 0;
 let playerScore = 0;
+let roundNumber = 0;
 
 buttons.forEach((button) => {
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        console.log("CLICK");
         roundOutcome = playRound(button.id,getComputerChoice());
-        console.log("Outcome " + roundOutcome + " " + (roundOutcome == -1));
-        updateScore(roundOutcome)
+        roundNumber += 1;
+        updateScore(roundOutcome);
         displayUpdatedScore(playerScore, computerScore);
-        
+        if (roundNumber == 5) {
+            const gameOutcomeMessage = document.querySelector('#gameOutcomeMessage');
+            if (playerScore > computerScore) {
+                gameOutcomeMessage.textContent = 'The game is over : You win!';
+            }
+            else if (computerScore > playerScore) {
+                gameOutcomeMessage.textContent = 'The game is over : Computer wins!';
+            }
+            else {
+                gameOutcomeMessage.textContent = 'The game is over : It\'s a tie!';
+            }
+        };
     });
 });
 
-const display_container = document.querySelector('#display_container');
-const result = document.createElement('p');
-result.classList.add('game_result');
-result.textContent = 'This is the glorious text-content!';
-display_container.appendChild(result);

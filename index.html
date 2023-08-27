@@ -2,16 +2,28 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Page Title</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <title>Rock Paper Scissors</title>
 </head>
 <body>
   <script src="rock_paper_scissors.js" defer></script>
-  <div class="main_container">
-    <button id="Rock">Rock</button>
-    <button id="Paper">Paper</button>
-    <button id="Scissors">Scissors</button>
+  <div class="layout", id="game_layout">
+    <h1>Rock, Paper, Scissors. 5 rounds.</h1>
+    <div class="container", id="game_rules">
+      <h2>Pick your weapon</h2>
+    </div>
+    <div class="container", id="button_container">
+      <button id="Rock">Rock</button>
+      <button id="Paper">Paper</button>
+      <button id="Scissors">Scissors</button>
+    </div>
+    <div class="container", id="score_container">
+      <div id="roundOutcomeMessage"></div>
+      <div id="score">
+        <p>Player 0 - 0 Computer</p>
+      </div>
+      <div id="gameOutcomeMessage"></div>
+    </div>
   </div> 
-  <div id="display_container"></div>
-  <div id="score"></div>
 </body>
 </html>
