@@ -1,4 +1,4 @@
-console.log(game())
+// console.log(game())
 
 
 function getComputerChoice() {
@@ -37,37 +37,38 @@ function getPlayerSelection() {
 
 
 function playRound(playerSelection, computerSelection) {
+    // returns 1 when the player wins the round, -1 when he loses and 0 and the game is tie
     if (playerSelection == computerSelection) {
-        alert("Tie : you both played "+playerSelection);
+        tieRoundMessage()
         return 0;
     }
     else {
         switch (playerSelection) {
             case "Rock":
                 if (computerSelection == "Paper") {
-                    alert("You lose! Paper beats Rock");
+                    loseRoundMessage()
                     return -1;
                 }
                 else {
-                    alert("You win! Rock beats Scissors");
+                    winRoundMessage()
                     return 1;
                 }
             case "Paper":
                 if (computerSelection == "Scissors") {
-                    alert("You lose! Scissors beats Paper");
+                    loseRoundMessage()
                     return -1;
                 }
                 else {
-                    alert("You win! Paper beats Rock");
+                    winRoundMessage()
                     return 1;
                 }
             case "Scissors":
                 if (computerSelection == "Rock") {
-                    alert("You lose! Rock beats Scissors");
+                    loseRoundMessage()
                     return -1;
                 }
                 else {
-                    alert("You win! Scissors beats Paper");
+                    winRoundMessage()
                     return 1;
                 }   
         }
@@ -107,3 +108,86 @@ function game() {
         return "You lose! The score is " + scorePlayer+-"-" + scoreComputer;
     }
 }
+
+
+function tieRoundMessage(){
+    const display_container = document.querySelector('#display_container');
+    const result = document.createElement('p');
+    result.classList.add('game_result');
+    result.textContent = "Tie game";
+    if (display_container.hasChildNodes()) {
+        display_container.replaceChild(result, display_container.firstChild)
+    }
+    else {
+        display_container.appendChild(result);
+    }
+}
+
+
+
+function winRoundMessage(){
+    const display_container = document.querySelector('#display_container');
+    const result = document.createElement('p');
+    result.classList.add('game_result');
+    result.textContent = "You win!";
+
+    if (display_container.hasChildNodes()) {
+        display_container.replaceChild(result, display_container.firstChild)
+    }
+    else {
+        display_container.appendChild(result);
+    }
+}
+
+function loseRoundMessage(){
+    const display_container = document.querySelector('#display_container');
+    const result = document.createElement('p');
+    result.classList.add('game_result');
+    result.textContent = "You lose!";
+    if (display_container.hasChildNodes()) {
+        display_container.replaceChild(result, display_container.firstChild)
+    }
+    else {
+        display_container.appendChild(result);
+    }
+}
+
+function displayUpdatedScore(){
+    const score = document.querySelector('#score').textContent = 
+            "Player " + playerScore + " - " + computerScore + " Computer";
+}
+
+
+function updateScore(roundOutcome) {
+    if (roundOutcome == 1) {
+        playerScore += 1;
+    }
+    else if (roundOutcome == -1) {
+        computerScore += 1;
+    }
+    console.log(computerScore)
+}
+
+console.log("start")
+const buttons = document.querySelectorAll('button')
+
+let computerScore = 0;
+let playerScore = 0;
+
+buttons.forEach((button) => {
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', () => {
+        console.log("CLICK");
+        roundOutcome = playRound(button.id,getComputerChoice());
+        console.log("Outcome " + roundOutcome + " " + (roundOutcome == -1));
+        updateScore(roundOutcome)
+        displayUpdatedScore(playerScore, computerScore);
+        
+    });
+});
+
+const display_container = document.querySelector('#display_container');
+const result = document.createElement('p');
+result.classList.add('game_result');
+result.textContent = 'This is the glorious text-content!';
+display_container.appendChild(result);
