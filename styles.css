@@ -81,6 +81,9 @@ body {
     font-size: 36px;
 }
 
+.weapon_selection button:hover {
+    transform: scale(1.1);
+}
 
 
 
@@ -107,4 +110,29 @@ footer {
     padding-bottom: 10px;
     color: white;
     text-align: center;
+}
+
+
+/* Restart button */
+
+#restartButton {
+    text-align: center;
+    border: none;
+    background-color:  #1F2937;
+    padding: 10px;
+    border-radius: 7px;
+    color: #F9FAF8;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+#restartButton:hover {
+    transform: scale(1.2);
+  }
+
+
+.gitimage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

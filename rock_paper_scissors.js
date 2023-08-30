@@ -1,6 +1,55 @@
-// console.log(game())
+const playerButtons = document.querySelectorAll('.player_buttons button')
+const computerButtons = document.querySelectorAll('.computer_buttons button')
+const roundOutcomeMessage = document.querySelector('.roundOutcomeMessage')
+const currentScore = document.querySelector('.score')
+const gameOutcomeMessage = document.querySelector('.gameOutcomeMessage')
+const restartButton = document.querySelector('#restartButton')
+
+restartButton.addEventListener('click',() => location.reload());
 
 
+playerButtons.forEach(button => { button.addEventListener('click', () => console.log('test')) });
+
+
+
+function playRound(playerSelection, computerSelection) {
+    // returns 1 when the player wins the round, -1 when he loses and 0 and the game is tie
+    if (playerSelection == computerSelection) {
+        tieRoundMessage()
+        return 0;
+    }
+    else {
+        switch (playerSelection) {
+            case "rock":
+                if (computerSelection == "Paper") {
+                    loseRoundMessage()
+                    return -1;
+                }
+                else {
+                    winRoundMessage()
+                    return 1;
+                }
+            case "paper":
+                if (computerSelection == "Scissors") {
+                    loseRoundMessage()
+                    return -1;
+                }
+                else {
+                    winRoundMessage()
+                    return 1;
+                }
+            case "scissors":
+                if (computerSelection == "Rock") {
+                    loseRoundMessage()
+                    return -1;
+                }
+                else {
+                    winRoundMessage()
+                    return 1;
+                }   
+        }
+    }
+}
 
 
 function getComputerChoice() {
@@ -17,7 +66,7 @@ function getComputerChoice() {
     }
 }
 
-
+/* 
 function getPlayerSelection() {
     let userChoice = prompt("Choose Rock, Paper or Scissors: ").toLowerCase();
     console.log(userChoice)
@@ -38,44 +87,7 @@ function getPlayerSelection() {
 }
 
 
-function playRound(playerSelection, computerSelection) {
-    // returns 1 when the player wins the round, -1 when he loses and 0 and the game is tie
-    if (playerSelection == computerSelection) {
-        tieRoundMessage()
-        return 0;
-    }
-    else {
-        switch (playerSelection) {
-            case "Rock":
-                if (computerSelection == "Paper") {
-                    loseRoundMessage()
-                    return -1;
-                }
-                else {
-                    winRoundMessage()
-                    return 1;
-                }
-            case "Paper":
-                if (computerSelection == "Scissors") {
-                    loseRoundMessage()
-                    return -1;
-                }
-                else {
-                    winRoundMessage()
-                    return 1;
-                }
-            case "Scissors":
-                if (computerSelection == "Rock") {
-                    loseRoundMessage()
-                    return -1;
-                }
-                else {
-                    winRoundMessage()
-                    return 1;
-                }   
-        }
-    }
-}
+
 
 function game() {
     let roundNumber = parseInt(prompt("Choose the number of rounds: "));
@@ -175,3 +187,4 @@ buttons.forEach((button) => {
     });
 });
 
+ */

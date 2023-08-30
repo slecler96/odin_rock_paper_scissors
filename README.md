@@ -10,3 +10,4 @@ Credits:
 Rock icon: https://www.flaticon.com/free-icons/rock
 Paper icon: https://www.flaticon.com/free-icons/paper
 Scissors icon: https://www.flaticon.com/free-icons/hairdress
+github icon: "https://www.flaticon.com/free-icons/github"
