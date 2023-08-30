@@ -1,10 +1,21 @@
 console.log(game())
 
-
+/*
+Si tu veux du code plus générique, tu pourrais mettre tes 3 choix dans un tableau et écrire une fonction qui prend un élément au hasard du tableau :)
+ */
 function getComputerChoice() {
     let max = 3;
     let choice = Math.floor(Math.random() * max)+1;
-    if (choice==1) {       
+    /*
+    Fait toujours des comparaisons avec === plutôt que ===, le double égal peut faire des choses un peu bizarre
+     */
+    if (choice==1) {
+        /*
+         "Rock" est une constante, tu devrais la définir une fois pour toute en faisant un
+         const ROCK = "Rock"
+         puis réutiliser cela partout.
+         Cela remplacera de potentielles erreurs de Rock qui devient Rok en erreur d'utilisation d'une variable non défini, que ton IDE devrait voir.
+         */
         return "Rock";
     }
     else if (choice==2) {
@@ -20,6 +31,10 @@ function getPlayerSelection() {
     let userChoice = prompt("Choose Rock, Paper or Scissors: ").toLowerCase();
     console.log(userChoice)
 
+    /*
+    Une manière plus élégante de l'écrire serait
+    while (![ROCK, PAPER, SCISSORS].includes(userChoice))
+     */
     while ((userChoice != "rock") && (userChoice != "paper") && (userChoice != "scissors")) {
         userChoice = prompt(userChoice + " is not valid. Please pick: rock or paper or scissors");
     }
@@ -43,6 +58,10 @@ function playRound(playerSelection, computerSelection) {
     }
     else {
         switch (playerSelection) {
+            /*
+            Tu te répètes beaucoup ici !
+            Tu pourrais déjà commencer par sortir l'alert du switch non ?
+             */
             case "Rock":
                 if (computerSelection == "Paper") {
                     alert("You lose! Paper beats Rock");
@@ -78,6 +97,10 @@ function game() {
     let roundNumber = parseInt(prompt("Choose the number of rounds: "));
 
     while (isNaN(roundNumber) || roundNumber < 0) {
+        /*
+        Je te conseille d'utiliser des templates string pour cela, ça fait plus propre que d'utiliser des + partout
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+         */
         roundNumber = prompt(roundNumber + " is not a valid number. Please enter a positive number");
     }
 
@@ -97,6 +120,9 @@ function game() {
         }
     }
 
+    /*
+    Tu répètes beaucoup "The score is ...", tu peux faire mieux je pense
+     */
     if (scorePlayer == scoreComputer) {
         return "The game is tie. The score is "+scorePlayer + "-" + scoreComputer;
     }
