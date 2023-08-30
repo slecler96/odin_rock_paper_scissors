@@ -1,29 +1,110 @@
 body {
-    background-color: black;
-    height: 100%;
+    background-color:rgb(161, 252, 222);
+    padding: 0;
+    margin: 0;
+    text-align: center;
     font-family: 'Roboto', arial;
 }
 
-.buttons {
-    background-color: white;
+
+/* Header with game title */
+.header {
+    background-color:#1F2937;
+    color:#F9FAF8;   
+    text-align: center;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
-h1 {
-    color: white
+.header h1 {
+    font-size: 48px;
 }
 
-h2 {
-    color: white
+
+/* Main layout with rules and weapon selection */
+
+.game_layout {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
 }
+
+.rules {
+    text-align: center;
+    font-size: 28px;
+}
+
+
+
+.weapon_selection {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    flex:1;
+    align-items: center;
+}
+
+
+.player_box {
+    flex-direction: column;
+    color: white;
+    background-color: #1F2937;
+    border: solid 1F2937;
+    margin-left: 300px;
+    display: flex;
+    text-align: center;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 36px;
+}
+
+.weapon_selection h3 {
+    margin: 30px;
+}
+
+.computer_box {
+    flex-direction: column;
+    color: white;
+    background-color: #1F2937;
+    border: solid 1F2937;
+    margin-right: 300px;
+    display: flex;
+    text-align: center;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 36px;
+}
+
+
+
+
 
 #roundOutcomeMessage {
     color: white
 }
 
-#score {
-    color: white
+.score {
+    font-size: 28px;
 }
 
 #gameOutcomeMessage {
     color: white
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1F2937;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    text-align: center;
 }

@@ -7,23 +7,40 @@
 </head>
 <body>
   <script src="rock_paper_scissors.js" defer></script>
-  <div class="layout", id="game_layout">
-    <h1>Rock, Paper, Scissors. 5 rounds.</h1>
-    <div class="container", id="game_rules">
-      <h2>Pick your weapon</h2>
+  <div class="header">
+    <h1>Rock, Paper, Scissors</h1>
+  </div>
+  <div class="game_layout">
+    <div class="rules">
+      <h2>The first to 5 wins</h2>
     </div>
-    <div class="container", id="button_container">
-      <button id="Rock">Rock</button>
-      <button id="Paper">Paper</button>
-      <button id="Scissors">Scissors</button>
+    <div class="weapon_selection">
+      <div class="player_box">
+        <h3>Player</h3>
+        <div class="player_buttons">
+          <button type="button", class="rock", id="playerRock"><img src="resources/stone.png" alt="Rock icon" border="0" height="75em"></button>
+          <button class="paper", id="playerPaper"><img src="resources/paper.png" alt="Rock icon" border="0" height="75em"></button>
+          <button class="scissors", id="playerScissors"><img src="resources/scissors.png" alt="Rock icon" border="0" height="75em"></button>
+        </div>   
+      </div>
+      <div class="computer_box">
+        <h3>Computer</h3>
+        <div class="computer_buttons">
+        <img  />
+          <button type="button", class="rock", id="computerRock"><img src="resources/stone.png" alt="Rock icon" border="0" height="75em"></button>
+          <button class="paper", id="computerPaper"><img src="resources/paper.png" alt="Rock icon" border="0" height="75em"></button>
+          <button class="scissors", id="computerScissors"><img src="resources/scissors.png" alt="Rock icon" border="0" height="75em"></button>
+        </div>
+      </div>
     </div>
-    <div class="container", id="score_container">
-      <div id="roundOutcomeMessage"></div>
-      <div id="score">
+    <div class="score_container">
+      <div class="roundOutcomeMessage"></div>
+      <div class="score">
         <p>Player 0 - 0 Computer</p>
       </div>
       <div id="gameOutcomeMessage"></div>
     </div>
-  </div> 
+  </div>
+  <footer>Copyright © slecler96 2023</footer>
 </body>
 </html>
