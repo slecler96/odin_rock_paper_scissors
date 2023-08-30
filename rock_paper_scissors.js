@@ -68,7 +68,7 @@ function getPlayerSelection(event) {
     event.target.style.background = 'green';
     let computerChoice = getComputerChoice()
     setTimeout(() => {
-        event.target.style.background = 'none';
+        event.target.style.background = '';
       }, 500);
     playRound(userChoice, computerChoice) ;
 
@@ -87,7 +87,7 @@ function getComputerChoice(event) {
     const computerButton = document.querySelector('#'+computerChoice+'Computer');  
     computerButton.style.background = 'red';
     setTimeout(() => {
-        computerButton.style.background = 'none';
+        computerButton.style.background = '';
       }, 500);
     return computerChoice
 }
@@ -169,8 +169,7 @@ function updateScore(roundOutcome) {
         computerScore += 1;
     }
     console.log("score"+playerScore)
-    const score = document.querySelector('.score p').textContent = 
-    "Player " + playerScore + " - " + computerScore + " Computer";
+    const score = document.querySelector('.score p').textContent = `Player ${playerScore} - ${computerScore} Computer`
 }
 
 /* console.log("start")
