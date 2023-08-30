@@ -1,3 +1,8 @@
+const ROCK = "rock"
+const PAPER = "paper"
+const SCISSORS = "scissors"
+
+
 const playerButtons = document.querySelectorAll('.player_buttons button')
 const computerButtons = document.querySelectorAll('.computer_buttons button')
 const roundOutcomeMessage = document.querySelector('.roundOutcomeMessage')
@@ -7,84 +12,96 @@ const restartButton = document.querySelector('#restartButton')
 
 restartButton.addEventListener('click',() => location.reload());
 
+let playerScore = 0;
+let computerScore=0;
 
-playerButtons.forEach(button => { button.addEventListener('click', () => console.log('test')) });
+playerButtons.forEach(button => { button.addEventListener('click', getPlayerSelection) });
 
 
 
 function playRound(playerSelection, computerSelection) {
     // returns 1 when the player wins the round, -1 when he loses and 0 and the game is tie
+    let result
+    console.log(computerSelection)
     if (playerSelection == computerSelection) {
         tieRoundMessage()
-        return 0;
+        result = 0;
     }
     else {
         switch (playerSelection) {
-            case "rock":
-                if (computerSelection == "Paper") {
-                    loseRoundMessage()
-                    return -1;
+            case ROCK:
+                if (computerSelection == PAPER) {
+                    result = -1;
                 }
                 else {
-                    winRoundMessage()
-                    return 1;
+                    result = 1;
                 }
-            case "paper":
-                if (computerSelection == "Scissors") {
-                    loseRoundMessage()
-                    return -1;
+            case PAPER:
+                if (computerSelection == SCISSORS) {
+                    result = -1;
                 }
                 else {
-                    winRoundMessage()
-                    return 1;
+                    result = 1;
                 }
-            case "scissors":
-                if (computerSelection == "Rock") {
-                    loseRoundMessage()
-                    return -1;
+            case SCISSORS:
+                if (computerSelection == ROCK) {
+                    result = -1;
                 }
                 else {
-                    winRoundMessage()
-                    return 1;
+                    result = 1;
                 }   
         }
     }
+    console.log("result"+result)
+    result === 1 ? winRoundMessage() : loseRoundMessage()
+    
+    updateScore(result)
+    checkWinner()
 }
 
-
-function getComputerChoice() {
-    let max = 3;
-    let choice = Math.floor(Math.random() * max)+1;
-    if (choice==1) {       
-        return "Rock";
-    }
-    else if (choice==2) {
-        return "Paper";
-    }
-    else {
-        return "Scissors";
-    }
-}
 
 /* 
-function getPlayerSelection() {
-    let userChoice = prompt("Choose Rock, Paper or Scissors: ").toLowerCase();
-    console.log(userChoice)
+Get the choice of the user, highlight the corresponding button in green and call getComputerChoice 
+*/
+function getPlayerSelection(event) {
+    let userChoice = event.target.id;
+    event.target.style.background = 'green';
+    let computerChoice = getComputerChoice()
+    setTimeout(() => {
+        event.target.style.background = 'none';
+      }, 500);
+    playRound(userChoice, computerChoice) ;
 
-    while ((userChoice != "rock") && (userChoice != "paper") && (userChoice != "scissors")) {
-        userChoice = prompt(userChoice + " is not valid. Please pick: rock or paper or scissors");
-    }
 
-    if (userChoice == "rock") {       
-        return "Rock";
-    }
-    else if (userChoice == "paper") {
-        return "Paper";
-    }
-    else {
-        return "Scissors";
-    }
 }
+
+/*
+Get the choice of the computer (random choice) and highlight the corresponding button in red
+*/
+function getComputerChoice(event) {
+    let computerChoices = [ROCK, PAPER, SCISSORS];
+    let max = 3;
+    let choice = Math.floor(Math.random() * max);
+    let computerChoice = computerChoices[choice]
+    console.log("comp choice "+computerChoice)
+    const computerButton = document.querySelector('#'+computerChoice+'Computer');  
+    computerButton.style.background = 'red';
+    setTimeout(() => {
+        computerButton.style.background = 'none';
+      }, 500);
+    return computerChoice
+}
+    
+
+
+function checkWinner() {
+    if (playerScore === 5 || computerScore === 5) {
+        let win = (compScore > playerScore) ? 'computer' : 'player';
+        updateWinner(win);
+      }
+}
+
+/*
 
 
 
@@ -123,29 +140,25 @@ function game() {
     }
 }
 
-
+*/
 function tieRoundMessage(){
-    const outcomeMessage = document.querySelector('#roundOutcomeMessage');
+    const outcomeMessage = document.querySelector('.roundOutcomeMessage');
     outcomeMessage.textContent = "Tie game";
 }
 
 
 
 function winRoundMessage(){
-    const outcomeMessage = document.querySelector('#roundOutcomeMessage');
+    const outcomeMessage = document.querySelector('.roundOutcomeMessage');
     outcomeMessage.textContent = "You win!";
 }
 
 function loseRoundMessage(){
-    const outcomeMessage = document.querySelector('#roundOutcomeMessage');
+    const outcomeMessage = document.querySelector('.roundOutcomeMessage');
     outcomeMessage.textContent = "You lose!";
 
 }
 
-function displayUpdatedScore(){
-    const score = document.querySelector('#score').textContent = 
-            "Player " + playerScore + " - " + computerScore + " Computer";
-}
 
 
 function updateScore(roundOutcome) {
@@ -155,15 +168,15 @@ function updateScore(roundOutcome) {
     else if (roundOutcome == -1) {
         computerScore += 1;
     }
-    console.log(computerScore)
+    console.log("score"+playerScore)
+    const score = document.querySelector('.score p').textContent = 
+    "Player " + playerScore + " - " + computerScore + " Computer";
 }
 
-console.log("start")
+/* console.log("start")
 const buttons = document.querySelectorAll('button')
 
-let computerScore = 0;
-let playerScore = 0;
-let roundNumber = 0;
+
 
 buttons.forEach((button) => {
     // and for each one we add a 'click' listener
@@ -186,5 +199,4 @@ buttons.forEach((button) => {
         };
     });
 });
-
  */
