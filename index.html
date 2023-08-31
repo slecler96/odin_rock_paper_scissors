@@ -6,48 +6,56 @@
   <title>Rock Paper Scissors</title>
 </head>
 <body>
+  <!-- Header with game title -->
   <div class="header">
     <h1>Rock, Paper, Scissors</h1>
   </div>
+
+  <!-- Main layout with game buttons and scores -->
   <div class="game_layout">
+
+    <!-- Display the rules -->
     <div class="rules">
-      <h2>The first to 5 wins</h2>
+      <h2>The first to <span id="maxScore"></span> wins</h2>
     </div>
+
+    <!-- Containers with rock/paper/scissors icons -->
     <div class="weapon_selection">
       <div class="player_box">
         <h3>Player</h3>
         <div class="player_buttons">
-          <button type="submit", class="rock", id="playerRock"><img src="resources/stone.png" alt="Rock icon" border="0" height="75em" id="rock"></button>
-          <button type="submit", class="paper", id="playerPaper"><img src="resources/paper.png" alt="Rock icon" border="0" height="75em" id="paper"></button>
-          <button type="submit", class="scissors", id="playerScissors"><img src="resources/scissors.png" alt="Rock icon" border="0" height="75em" id="scissors"></button>
+          <button type="submit", class="rock"><img src="resources/stone.png" alt="Rock icon" border="0" height="75em" id="rock"></button>
+          <button type="submit", class="paper"><img src="resources/paper.png" alt="Rock icon" border="0" height="75em" id="paper"></button>
+          <button type="submit", class="scissors"><img src="resources/scissors.png" alt="Rock icon" border="0" height="75em" id="scissors"></button>
         </div>   
       </div>
       <div class="computer_box">
         <h3>Computer</h3>
         <div class="computer_buttons">
         <img  />
-          <button type="submit", class="rock", id="computerRock"><img src="resources/stone.png" alt="Rock icon" border="0" height="75em" id="rockComputer"></button>
-          <button type="submit", class="paper", id="computerPaper"><img src="resources/paper.png" alt="Rock icon" border="0" height="75em" id="paperComputer"></button>
-          <button type="submit", class="scissors", id="computerScissors"><img src="resources/scissors.png" alt="Rock icon" border="0" height="75em" id="scissorsComputer"></button>
+          <button type="submit", class="rock"><img src="resources/stone.png" alt="Rock icon" border="0" height="75em" id="rockComputer"></button>
+          <button type="submit", class="paper"><img src="resources/paper.png" alt="Rock icon" border="0" height="75em" id="paperComputer"></button>
+          <button type="submit", class="scissors"><img src="resources/scissors.png" alt="Rock icon" border="0" height="75em" id="scissorsComputer"></button>
         </div>
       </div>
     </div>
+
+     <!-- Display the score and messages -->
     <div class="score_container">
       <div class="roundOutcomeMessage"></div>
       <div class="score">
         <p>Player 0 - 0 Computer</p>
       </div>
-      <div id="gameOutcomeMessage"></div>
+      <div class="gameOutcomeMessage"></div>
     </div>
+
+     <!-- Reset button -->
     <div class="restartButton">
       <button type="reset", id="restartButton">Restart!</button>
     </div>
   </div>
-  <footer>Copyright © slecler96 2023 <a href=https://github.com/slecler96><img src="resources/github.png" alt="github icon" height="30px" class="gitimage"/></a></footer>
+
+  <footer>Created by slecler96 2023 <a href=https://github.com/slecler96><img src="resources/github.png" alt="github icon" height="30px" class="gitimage"/></a></footer>
 </body>
 <script src="rock_paper_scissors.js"></script>
 </html>
-
-<a href="https://github.com/michalosman" target="_blank">
-  <i class="fab fa-github"></i
-></a>

@@ -88,12 +88,49 @@ body {
 
 
 
-#roundOutcomeMessage {
-    color: white
+.roundOutcomeMessage {
+    color: black;
+    font-size: 36px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+    padding-top: 20px;
+}
+
+
+.roundOutcomeMessage {
+    color: black;
+    font-size: 36px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+    padding-top: 20px;
+}
+
+
+.roundOutcomeMessage::first-letter {
+    text-transform: uppercase;
+}
+
+.gameOutcomeMessage {
+    color: black;
+    font-size: 36px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50px;
+    padding: 20px;
+}
+
+
+.gameOutcomeMessage::first-letter {
+    text-transform: uppercase;
 }
 
 .score {
-    font-size: 28px;
+    font-size: 32px;
 }
 
 #gameOutcomeMessage {
